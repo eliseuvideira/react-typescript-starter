@@ -44,6 +44,7 @@ const config = {
       }),
     ],
   },
+  performance: false,
 };
 
 module.exports = config;
