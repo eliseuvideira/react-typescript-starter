@@ -22,8 +22,8 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: join(__dirname, 'src', 'index.html'),
-      favicon: join(__dirname, 'src', 'favicon.ico'),
+      template: join(__dirname, 'public', 'index.html'),
+      favicon: join(__dirname, 'public', 'favicon.ico'),
     }),
     new DotEnvPlugin({
       safe: true,
