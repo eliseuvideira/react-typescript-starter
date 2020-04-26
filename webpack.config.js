@@ -15,7 +15,7 @@ const config = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: ['ts-loader'],
+        use: ['react-hot-loader/webpack', 'ts-loader'],
         exclude: /node_modules/,
       },
     ],

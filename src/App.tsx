@@ -1,5 +1,7 @@
 import React from 'react';
+import { hot } from 'react-hot-loader/root';
+import Counter from './components/Counter';
 
-const App = () => <div>Hello World</div>;
+const App = () => <Counter />;
 
-export default App;
+export default hot(App);
