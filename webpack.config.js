@@ -13,7 +13,8 @@ const config = {
     filename: 'bundle.js',
     publicPath: '/',
   },
-  devtool: 'source-map',
+  devtool:
+    process.env.NODE_ENV === 'development' ? 'inline-source-map' : 'source-map',
   module: {
     rules: [
       {
