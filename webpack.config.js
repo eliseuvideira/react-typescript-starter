@@ -31,6 +31,7 @@ const config = {
     }),
     new DotEnvPlugin({
       safe: true,
+      systemvars: true,
     }),
   ],
   resolve: {
