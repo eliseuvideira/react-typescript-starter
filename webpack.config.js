@@ -5,6 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DotEnvPlugin = require('dotenv-webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 
+require('dotenv-safe').config();
+
 /** @type {webpack.Configuration} */
 const config = {
   entry: ['react-hot-loader/patch', join(__dirname, 'src', 'index.tsx')],
@@ -30,7 +32,6 @@ const config = {
       favicon: join(__dirname, 'public', 'favicon.ico'),
     }),
     new DotEnvPlugin({
-      safe: true,
       systemvars: true,
     }),
   ],
@@ -41,6 +42,9 @@ const config = {
     minimizer: [new TerserPlugin()],
   },
   performance: false,
+  devServer: {
+    historyApiFallback: true,
+  },
 };
 
 module.exports = config;
