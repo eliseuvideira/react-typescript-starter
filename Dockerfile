@@ -1,7 +1,9 @@
 FROM node:14-alpine as build
+ARG NODE_ENV
+ARG API_URL
 WORKDIR /usr/src/app
 COPY package.json yarn.lock ./
-RUN yarn install
+RUN NODE_ENV=development yarn install
 COPY . . 
 RUN yarn build
 

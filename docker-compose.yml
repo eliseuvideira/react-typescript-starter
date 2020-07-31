@@ -2,10 +2,11 @@ version: '3.6'
 
 services:
   nginx:
-    build: '.'
-    container_name: '${CONTAINER_NAME}'
+    build: 
+      args:
+        - NODE_ENV=production
+        - API_URL=$API_URL
+      context: .
     ports:
-      - '${PORT}:80'
-    restart: 'always'
-    environment:
-      - 'NODE_ENV=production'
+      - 80:80
+    restart: always
