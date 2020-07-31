@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const { join } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DotEnvPlugin = require('dotenv-webpack');
-const TerserPlugin = require('terser-webpack-plugin');
 
 require('dotenv-safe').config();
 
@@ -37,9 +36,6 @@ const config = {
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
-  },
-  optimization: {
-    minimizer: [new TerserPlugin()],
   },
   performance: false,
   devServer: {
