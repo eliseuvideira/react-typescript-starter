@@ -9,12 +9,20 @@
     "dotenv-safe": "^8.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0"
+    "react-helmet": "^6.1.0",
+    "react-is": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "styled-components": "^5.1.1",
+    "typography": "^0.16.19",
+    "typography-theme-noriega": "^0.16.19"
   },
   "devDependencies": {
     "@types/react": "^16.9.44",
     "@types/react-dom": "^16.9.8",
+    "@types/react-helmet": "^6.0.0",
     "@types/react-router-dom": "^5.1.5",
+    "@types/styled-components": "^5.1.2",
+    "@types/typography": "^0.16.3",
     "@types/webpack": "^4.41.21",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",

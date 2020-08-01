@@ -1,14 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Layout from '../components/layout';
 
 const Index = () => (
-  <div>
-    <div>
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-    </div>
+  <Layout title="Home">
     <div>Home</div>
-  </div>
+  </Layout>
 );
 
 export default Index;

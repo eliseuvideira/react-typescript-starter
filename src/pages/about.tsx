@@ -1,14 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Layout from '../components/layout';
 
 const About = () => (
-  <div>
-    <div>
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-    </div>
+  <Layout title="About">
     <div>About</div>
-  </div>
+  </Layout>
 );
 
 export default About;
