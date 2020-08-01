@@ -17,6 +17,11 @@
     "typography-theme-noriega": "^0.16.19"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@hot-loader/react-dom": "^16.13.0",
     "@types/react": "^16.9.44",
     "@types/react-dom": "^16.9.8",
     "@types/react-helmet": "^6.0.0",
@@ -26,8 +31,10 @@
     "@types/webpack": "^4.41.21",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",
+    "babel-loader": "^8.1.0",
     "eslint": "^7.6.0",
     "eslint-plugin-react": "^7.20.5",
+    "fork-ts-checker-webpack-plugin": "^5.0.13",
     "html-webpack-plugin": "^4.2.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
@@ -41,7 +48,7 @@
   },
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack-dev-server --mode development --hot --inline --open",
+    "dev": "NODE_ENV=development webpack-dev-server --mode development --hot --inline --open",
     "format": "prettier --check 'src/**/*.{js,ts,tsx}'",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "start": "yarn dev"
