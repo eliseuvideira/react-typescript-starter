@@ -37,9 +37,13 @@ const getConfig = () => {
                 presets: [
                   [
                     '@babel/preset-env',
-                    { targets: { browsers: 'last 2 versions' } },
+                    {
+                      targets: {
+                        browsers: 'last 2 versions, not dead, > 0.25%',
+                      },
+                    },
                   ],
-                  '@babel/preset-typescript',
+                  ['@babel/preset-typescript', { onlyRemoveTypeImports: true }],
                   '@babel/preset-react',
                 ],
                 plugins: ['react-hot-loader/babel'],
@@ -80,13 +84,30 @@ const getConfig = () => {
       rules: [
         {
           test: /\.tsx?$/,
-          use: ['ts-loader'],
           exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              babelrc: false,
+              cacheDirectory: true,
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    targets: { browsers: 'last 2 versions, not dead, > 0.25%' },
+                  },
+                ],
+                ['@babel/preset-typescript', { onlyRemoveTypeImports: true }],
+                '@babel/preset-react',
+              ],
+            },
+          },
         },
       ],
     },
     performance: false,
     plugins: [
+      new ForkTsCheckerWebpackPlugin(),
       new webpack.EnvironmentPlugin(requiredKeys),
       new HtmlWebpackPlugin({
         template: join(__dirname, 'public', 'index.html'),
