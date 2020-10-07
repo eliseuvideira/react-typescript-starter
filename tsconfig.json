@@ -4,7 +4,7 @@
     "module": "es6",
     "jsx": "react",
     "sourceMap": true,
-    "outDir": "./build",
+    "outDir": "build",
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -13,6 +13,5 @@
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true
-  },
-  "include": ["./src/**/*"]
+  }
 }
