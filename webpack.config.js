@@ -4,22 +4,36 @@ const { join } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
-const isDev = process.env.NODE_ENV === 'development';
-
-const { required: requiredKeys } = require('dotenv-safe').config();
+const { required: env } = require('dotenv-safe').config();
 
 /**
  * @returns {webpack.Configuration}
  */
-const getConfig = () => {
-  if (isDev) {
+const createConfig = () => {
+  /**
+   * @type {webpack.Configuration}
+   */
+  const config = {
+    entry: join(__dirname, 'src', 'index.tsx'),
+    output: {
+      path: join(__dirname, 'build'),
+      filename: 'bundle.js',
+      publicPath: '/',
+    },
+    performance: false,
+    plugins: [
+      new ForkTsCheckerWebpackPlugin(),
+      new webpack.EnvironmentPlugin(env),
+      new HtmlWebpackPlugin({
+        template: join(__dirname, 'public', 'index.html'),
+        favicon: join(__dirname, 'public', 'favicon.ico'),
+      }),
+    ],
+  };
+
+  if (process.env.NODE_ENV === 'development') {
     return {
-      entry: join(__dirname, 'src', 'index.tsx'),
-      output: {
-        path: join(__dirname, 'build'),
-        filename: 'bundle.js',
-        publicPath: '/',
-      },
+      ...config,
       devServer: {
         historyApiFallback: true,
       },
@@ -52,16 +66,6 @@ const getConfig = () => {
           },
         ],
       },
-      performance: false,
-      plugins: [
-        new ForkTsCheckerWebpackPlugin(),
-        new webpack.NamedModulesPlugin(),
-        new webpack.EnvironmentPlugin(requiredKeys),
-        new HtmlWebpackPlugin({
-          template: join(__dirname, 'public', 'index.html'),
-          favicon: join(__dirname, 'public', 'favicon.ico'),
-        }),
-      ],
       resolve: {
         modules: ['node_modules'],
         alias: {
@@ -73,12 +77,7 @@ const getConfig = () => {
   }
 
   return {
-    entry: join(__dirname, 'src', 'index.tsx'),
-    output: {
-      path: join(__dirname, 'build'),
-      filename: 'bundle.js',
-      publicPath: '/',
-    },
+    ...config,
     devtool: 'source-map',
     module: {
       rules: [
@@ -105,21 +104,12 @@ const getConfig = () => {
         },
       ],
     },
-    performance: false,
-    plugins: [
-      new ForkTsCheckerWebpackPlugin(),
-      new webpack.EnvironmentPlugin(requiredKeys),
-      new HtmlWebpackPlugin({
-        template: join(__dirname, 'public', 'index.html'),
-        favicon: join(__dirname, 'public', 'favicon.ico'),
-      }),
-    ],
     resolve: {
       extensions: ['.tsx', '.ts', '.js'],
     },
   };
 };
 
-const config = getConfig();
+const config = createConfig();
 
 module.exports = config;
